@@ -1,7 +1,20 @@
 aea init --author group14
-aea create my_first_aea
-cd my_first_aea
-aea run --connections fetchai/stub:0.1.0&
-echo 'my_first_aea,sender_aea,fetchai/default:0.1.0,\x08\x01*\x07\n\x05hello' >> input_file
-sleep 5
-cat output_file
+aea create my_seller_aea
+cd my_seller_aea
+aea add connection fetchai/oef:0.1.0
+aea add skill fetchai/generic_seller:0.1.0
+aea install
+cd ..
+aea create my_buyer_aea
+cd my_buyer_aea
+aea add connection fetchai/oef:0.1.0
+aea add skill fetchai/generic_buyer:0.1.0
+aea install
+aea generate-key fetchai
+aea add-key fetchai fet_private_key.txt
+aea generate-key ethereum
+aea add-key ethereum eth_private_key.txt
+aea generate-wealth fetchai
+
+cd ..
+cat my_seller_aea/aea-config.yaml
