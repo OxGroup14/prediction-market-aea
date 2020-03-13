@@ -1,4 +1,4 @@
 aea[all]
 GitPython
 tox
-protobuf
+protobuf==3.8.0
