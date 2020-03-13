@@ -1,1 +1,4 @@
 aea[all]
+GitPython
+tox
+protobuf
