@@ -39,6 +39,7 @@ Other methods (e.g. ``on_cfp``, ``on_error`` etc.) are omitted, since not needed
 
 from oef.agents import OEFAgent
 from oef.schema import DataModel, Description, AttributeSchema
+import asyncio
 
 
 # Uncomment the following lines if you want more output
@@ -62,7 +63,7 @@ class EchoServiceAgent(OEFAgent):
 if __name__ == '__main__':
 
     # create agent and connect it to OEF
-    server_agent = EchoServiceAgent("echo_server", oef_addr="oef-node", oef_port=10000)
+    server_agent = EchoServiceAgent("echo_server", oef_addr="oef-node", oef_port=10000, loop = asyncio.get_event_loop())
     server_agent.connect()
 
     # register a service on the OEF

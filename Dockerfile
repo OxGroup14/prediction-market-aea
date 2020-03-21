@@ -9,7 +9,6 @@ RUN sleep 1
 RUN git clone https://github.com/fetchai/oef-sdk-python.git --recursive
 RUN cd oef-sdk-python && sed -i 's/"--proto_path",/"path",/g' setup.py
 RUN cd oef-sdk-python && sed -i 's/#print/print/g' setup.py
-RUN cd oef-sdk-python && sed -i 's/not\sloop/False/g' oef/core.py
 RUN cd oef-sdk-python && cat setup.py
 RUN cd oef-sdk-python && python3 setup.py protoc  && python3 setup.py install
 COPY quickstart.sh .

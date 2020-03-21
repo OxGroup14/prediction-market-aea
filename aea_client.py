@@ -36,13 +36,12 @@ The class ``EchoClientAgent`` define the behaviour of the echo client agent.
 * once he receives a message (see ``on_message`` method), he stops.
 Other methods (e.g. ``on_cfp``, ``on_error`` etc.) are omitted, since not needed.
 """
-
 from typing import List
 
 from oef.agents import OEFAgent
 from oef.schema import DataModel, AttributeSchema
 from oef.query import Query, Constraint, Eq
-
+import asyncio
 
 # Uncomment the following lines if you want more output
 # import logging
@@ -76,7 +75,7 @@ class EchoClientAgent(OEFAgent):
 if __name__ == '__main__':
 
     # define an OEF Agent
-    client_agent = EchoClientAgent("echo_client", oef_addr="oef-node", oef_port=10000)
+    client_agent = EchoClientAgent("echo_client", oef_addr="oef-node", oef_port=10000, loop = asyncio.get_event_loop())
 
     # connect it to the OEF Node
     client_agent.connect()
